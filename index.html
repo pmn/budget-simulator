@@ -6,6 +6,35 @@
   </head>
   <body>
     <h1>Budget Simulation</h1>
-    <div ng-controller="SalesController"></div>
+    <div ng-controller="SalesCtrl">
+      <h2>Sales</h2>
+      <table>
+        <tr ng-repeat="employee in employees">
+          <td><input type="checkbox" ng-model="employee.employed" /></td>
+          <td>{{ employee.title }}</td>
+          <td align="right">{{ employee.salary }}</td>
+        </tr>
+      </table>
+      <h4>Sales Summary</h4>
+      # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
+      Total Salary: {{ GetCurrentSalaries() }}<br>
+      Avg Salary: {{ GetAverageSalary() }}<br>
+    </div>
+
+    <div ng-controller="LogisticsCtrl">
+      <h2>Finance</h2>
+      <table>
+        <tr ng-repeat="employee in employees">
+          <td><input type="checkbox" ng-model="employee.employed" /></td>
+          <td>{{ employee.title }}</td>
+          <td align="right">{{ employee.salary }}</td>
+        </tr>
+      </table>
+      <h4>Sales Summary</h4>
+      # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
+      Total Salary: {{ GetCurrentSalaries() }}<br>
+      Avg Salary: {{ GetAverageSalary() }}<br>
+    </div>
+
   </body>
 </html>
