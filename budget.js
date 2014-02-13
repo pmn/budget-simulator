@@ -1,25 +1,47 @@
-function SalesCtrl($scope) {
-    $scope.GetCurrentSalaries = function() {
+function BudgetCtrl($scope){
+    $scope.accountantAdded = false;
+
+    $scope.totalCuts = function() {
+        return $scope.salesCuts() + $scope.logisticsCuts() + $scope.financeCuts();
+    };
+
+    $scope.requiredCuts = function() {
+        return 450000;
+    };
+
+    $scope.balance = function() {
+        return $scope.requiredCuts() - $scope.totalCuts();
+    };
+
+    $scope.salesCuts = function() {
         var total = 0.0;
-        $scope.employees.forEach(function(employee){
+        $scope.salesEmployees.forEach(function(employee){
+            if (!employee.employed) total += employee.salary;
+        });
+        return total;
+    };
+
+    $scope.salesSalaries = function() {
+        var total = 0.0;
+        $scope.salesEmployees.forEach(function(employee){
             if (employee.employed) total += employee.salary;
         });
 
         return total;
     };
 
-    $scope.GetAverageSalary = function() {
-        var total = $scope.GetCurrentSalaries();
+    $scope.averageSalesSalary = function() {
+        var total = $scope.salesSalaries();
         var num_employees = 0.0;
 
-        $scope.employees.forEach(function(employee){
+        $scope.salesEmployees.forEach(function(employee){
             if (employee.employed) num_employees += 1;
         });
 
         return total / num_employees;
     };
 
-    $scope.employees = [
+    $scope.salesEmployees = [
         {'title': 'Sales Director', 'salary': 177000, 'employed': true },
         {'title': 'Secretary', 'salary' : 51000, 'employed': true },
         {'title': 'Mechandising Manager', 'salary': 93200, 'employed': true },
@@ -44,31 +66,36 @@ function SalesCtrl($scope) {
         {'title': 'West Sales Person', 'salary': 75000, 'employed': true },
         {'title': 'West Sales Person', 'salary': 75000, 'employed': true },
         {'title': 'West Sales Person', 'salary': 75000, 'employed': true }];
-};
 
-
-function LogisticsCtrl($scope){
-    $scope.GetCurrentSalaries = function() {
+    $scope.logisticsCuts = function() {
         var total = 0.0;
-        $scope.employees.forEach(function(employee){
+        $scope.logisticsEmployees.forEach(function(employee){
+            if (!employee.employed) total += employee.salary;
+        });
+        return total;
+    };
+
+    $scope.logisticsSalaries = function() {
+        var total = 0.0;
+        $scope.logisticsEmployees.forEach(function(employee){
             if (employee.employed) total += employee.salary;
         });
 
         return total;
     };
 
-    $scope.GetAverageSalary = function() {
-        var total = $scope.GetCurrentSalaries();
+    $scope.averageLogisticsSalary = function() {
+        var total = $scope.logisticsSalaries();
         var num_employees = 0.0;
 
-        $scope.employees.forEach(function(employee){
+        $scope.logisticsEmployees.forEach(function(employee){
             if (employee.employed) num_employees += 1;
         });
 
         return total / num_employees;
     };
 
-    $scope.employees = [
+    $scope.logisticsEmployees = [
         {'title': 'Logistics Manager', 'salary': 135000, 'employed': true },
         {'title': 'Cafeteria Staff', 'salary': 41200, 'employed': true },
         {'title': 'Cafeteria Staff', 'salary': 41200, 'employed': true },
@@ -101,30 +128,36 @@ function LogisticsCtrl($scope){
         {'title': 'Stock Staff', 'salary': 50400, 'employed':true },
         {'title': 'Driver', 'salary': 60000, 'employed':true },
         {'title': 'Driver', 'salary': 60000, 'employed':true }];
-};
 
-function FinanceCtrl($scope) {
-    $scope.GetCurrentSalaries = function() {
+    $scope.financeCuts = function() {
         var total = 0.0;
-        $scope.employees.forEach(function(employee){
+        $scope.financeEmployees.forEach(function(employee){
+            if (!employee.employed) total += employee.salary;
+        });
+        return total;
+    };
+
+    $scope.financeSalaries = function() {
+        var total = 0.0;
+        $scope.financeEmployees.forEach(function(employee){
             if (employee.employed) total += employee.salary;
         });
 
         return total;
     };
 
-    $scope.GetAverageSalary = function() {
-        var total = $scope.GetCurrentSalaries();
+    $scope.averageFinanceSalary = function() {
+        var total = $scope.financeSalaries();
         var num_employees = 0.0;
 
-        $scope.employees.forEach(function(employee){
+        $scope.financeEmployees.forEach(function(employee){
             if (employee.employed) num_employees += 1;
         });
 
         return total / num_employees;
     };
 
-    $scope.employees = [
+    $scope.financeEmployees = [
         {'title': 'Finance Director', 'salary': 151000, 'employed': true },
         {'title': 'Accountant', 'salary': 102000, 'employed': false},
         {'title': 'Secretary', 'salary': 48000, 'employed': true},

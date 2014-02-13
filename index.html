@@ -21,26 +21,27 @@
   </head>
   <body>
     <h1>Budget Simulation</h1>
-    <div class="container">
+    <div class="container" ng-controller="BudgetCtrl">
       <div class="row">
-        <div class="col-md-5"><h3>Total Cuts Required: $450,000.00</h3></div>
-        <div class="col-md-7"><h3>Total Cuts Proposed: {{ }}</h3></div>
+        <div class="col-md-5"><h3>Total Cuts Required: {{ requiredCuts() }}</h3></div>
+        <div class="col-md-7"><h3>Total Cuts Proposed: {{ totalCuts() }}</h3></div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h2>Remaining: {{ }}</h2>
+          <h2>Remaining: <span class="cuts_remaining">{{ balance() }}</span></h2>
         </div>
       </div>
+
       <div class="row">
-        <div ng-controller="SalesCtrl" class="col-md-4">
+        <div class="col-md-4">
           <h2>Sales</h2>
           <div class="well">
-            # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
-            Total Salary: {{ GetCurrentSalaries() }}<br>
-            Avg Salary: {{ GetAverageSalary() }}
+            # Employees:  {{( salesEmployees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ salesSalaries() }}<br>
+            Avg Salary: {{ averageSalesSalary() }}
           </div>
           <table>
-            <tr ng-repeat="employee in employees">
+            <tr ng-repeat="employee in salesEmployees">
               <td>
                 <label><input type="checkbox" ng-model="employee.employed" />
                 {{ employee.title }}</label>
@@ -50,15 +51,15 @@
           </table>
         </div>
 
-        <div ng-controller="LogisticsCtrl" class="col-md-4">
+        <div class="col-md-4">
           <h2>Logistics</h2>
           <div class="well">
-            # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
-            Total Salary: {{ GetCurrentSalaries() }}<br>
-            Avg Salary: {{ GetAverageSalary() }}
+            # Employees:  {{( logisticsEmployees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ logisticsSalaries() }}<br>
+            Avg Salary: {{ averageLogisticsSalary() }}
           </div>
           <table>
-            <tr ng-repeat="employee in employees">
+            <tr ng-repeat="employee in logisticsEmployees">
               <td>
                 <label><input type="checkbox" ng-model="employee.employed" />
                 {{ employee.title }}</label>
@@ -68,15 +69,15 @@
           </table>
         </div>
 
-        <div ng-controller="FinanceCtrl" class="col-md-4">
+        <div class="col-md-4">
           <h2>Finance</h2>
           <div class="well">
-            # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
-            Total Salary: {{ GetCurrentSalaries() }}<br>
-            Avg Salary: {{ GetAverageSalary() }}
+            # Employees:  {{( financeEmployees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ financeSalaries() }}<br>
+            Avg Salary: {{ averageFinanceSalary() }}
           </div>
           <table>
-            <tr ng-repeat="employee in employees">
+            <tr ng-repeat="employee in financeEmployees">
               <td>
                 <label><input type="checkbox" ng-model="employee.employed" />
                 {{ employee.title }}</label>
