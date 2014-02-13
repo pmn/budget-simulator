@@ -121,9 +121,9 @@ function BudgetCtrl($scope){
 
     $scope.logisticsEmployees = [
         {'title': '(A) Logistics Manager', 'salary': 135000, 'employed': true },
-        {'title': '(C) Cafeteria Staff', 'salary': 41200, 'employed': true },
-        {'title': '(C) Cafeteria Staff', 'salary': 41200, 'employed': true },
-        {'title': '(C) Cafeteria Staff', 'salary': 41200, 'employed': true },
+        {'title': '(C) Cafeteria Manager', 'salary': 66920, 'employed': true },
+        {'title': '(C) Cafeteria Staff', 'salary': 28340, 'employed': true },
+        {'title': '(C) Cafeteria Staff', 'salary': 28340, 'employed': true },
         {'title': '(B) Secretary', 'salary': 48000, 'employed': true },
         {'title': '(A) Supervisor Receiving', 'salary': 75600, 'employed': true },
         {'title': '(B) Stock Staff', 'salary': 50400, 'employed': true },

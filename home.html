@@ -31,18 +31,13 @@
         </div>
       </div>
       <div class="row">
-        A = Don't Cut<br>
-        B = Can Cut<br>
-        C = Should Cut<br>
-      </div>
-      <div class="row">
         <div class="col-md-4">
           <h2>Sales</h2>
           <div class="well">
             # Employees:  {{( salesEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ salesSalaries()|currency }}<br>
             Avg Salary: {{ averageSalesSalary()|currency }}<br>
-            Cut Percentage: {{ salesPercent() }}%<br>
+            Cut Amount: {{ salesCuts()|currency }} <br>
             <label>Cut:</label>
             <ul>
               <li ng-repeat="employee in salesEmployees|filter:{'employed':false}">
@@ -68,7 +63,7 @@
             # Employees:  {{( financeEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ financeSalaries()|currency }}<br>
             Avg Salary: {{ averageFinanceSalary()|currency }}<br>
-            Cut Percentage: {{ financePercent() }} %<br>
+            Cut Amount: {{ financeCuts()|currency }} <br>
             <label>Cut:</label>
             <ul>
               <li ng-repeat="employee in financeEmployees|filter:{'employed':false}">
@@ -93,7 +88,7 @@
             # Employees:  {{( logisticsEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ logisticsSalaries()|currency }}<br>
             Avg Salary: {{ averageLogisticsSalary()|currency }}<br>
-            Cut Percentage: {{ logisticsPercent() }} %<br>
+            Cut Amount: {{ logisticsCuts()|currency }} <br>
             <label>Cut:</label>
             <ul>
               <li ng-repeat="employee in logisticsEmployees|filter:{'employed':false}">
