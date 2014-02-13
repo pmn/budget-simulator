@@ -38,7 +38,13 @@
           <div class="well">
             # Employees:  {{( salesEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ salesSalaries()|currency }}<br>
-            Avg Salary: {{ averageSalesSalary()|currency }}
+            Avg Salary: {{ averageSalesSalary()|currency }}<br>
+            <label>Cut:</label>
+            <ul>
+              <li ng-repeat="employee in salesEmployees|filter:{'employed':false}">
+                {{ employee.title }}
+              </li>
+            </ul>
           </div>
           <table>
             <tr ng-repeat="employee in salesEmployees">
@@ -56,7 +62,13 @@
           <div class="well">
             # Employees:  {{( logisticsEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ logisticsSalaries()|currency }}<br>
-            Avg Salary: {{ averageLogisticsSalary()|currency }}
+            Avg Salary: {{ averageLogisticsSalary()|currency }}<br>
+            <label>Cut:</label>
+            <ul>
+              <li ng-repeat="employee in logisticsEmployees|filter:{'employed':false}">
+                {{ employee.title }}
+              </li>
+            </ul>
           </div>
           <table>
             <tr ng-repeat="employee in logisticsEmployees">
@@ -74,7 +86,13 @@
           <div class="well">
             # Employees:  {{( financeEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ financeSalaries()|currency }}<br>
-            Avg Salary: {{ averageFinanceSalary()|currency }}
+            Avg Salary: {{ averageFinanceSalary()|currency }}<br>
+            <label>Cut:</label>
+            <ul>
+              <li ng-repeat="employee in financeEmployees|filter:{'employed':false}">
+                {{ employee.title }}
+              </li>
+            </ul>
           </div>
           <table>
             <tr ng-repeat="employee in financeEmployees">
