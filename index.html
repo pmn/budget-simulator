@@ -1,40 +1,95 @@
 <!doctype html>
 <html ng-app>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Budget Cuts</title>
+
+    <!-- Bootstrap -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
     <script src="budget.js"></script>
   </head>
   <body>
     <h1>Budget Simulation</h1>
-    <div ng-controller="SalesCtrl">
-      <h2>Sales</h2>
-      <table>
-        <tr ng-repeat="employee in employees">
-          <td><input type="checkbox" ng-model="employee.employed" /></td>
-          <td>{{ employee.title }}</td>
-          <td align="right">{{ employee.salary }}</td>
-        </tr>
-      </table>
-      <h4>Sales Summary</h4>
-      # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
-      Total Salary: {{ GetCurrentSalaries() }}<br>
-      Avg Salary: {{ GetAverageSalary() }}<br>
-    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5"><h3>Total Cuts Required: $450,000.00</h3></div>
+        <div class="col-md-7"><h3>Total Cuts Proposed: {{ }}</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Remaining: {{ }}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div ng-controller="SalesCtrl" class="col-md-4">
+          <h2>Sales</h2>
+          <div class="well">
+            # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ GetCurrentSalaries() }}<br>
+            Avg Salary: {{ GetAverageSalary() }}
+          </div>
+          <table>
+            <tr ng-repeat="employee in employees">
+              <td>
+                <label><input type="checkbox" ng-model="employee.employed" />
+                {{ employee.title }}</label>
+              </td>
+              <td align="right">{{ employee.salary }}</td>
+            </tr>
+          </table>
+        </div>
 
-    <div ng-controller="LogisticsCtrl">
-      <h2>Finance</h2>
-      <table>
-        <tr ng-repeat="employee in employees">
-          <td><input type="checkbox" ng-model="employee.employed" /></td>
-          <td>{{ employee.title }}</td>
-          <td align="right">{{ employee.salary }}</td>
-        </tr>
-      </table>
-      <h4>Sales Summary</h4>
-      # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
-      Total Salary: {{ GetCurrentSalaries() }}<br>
-      Avg Salary: {{ GetAverageSalary() }}<br>
-    </div>
+        <div ng-controller="LogisticsCtrl" class="col-md-4">
+          <h2>Logistics</h2>
+          <div class="well">
+            # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ GetCurrentSalaries() }}<br>
+            Avg Salary: {{ GetAverageSalary() }}
+          </div>
+          <table>
+            <tr ng-repeat="employee in employees">
+              <td>
+                <label><input type="checkbox" ng-model="employee.employed" />
+                {{ employee.title }}</label>
+              </td>
+              <td align="right">{{ employee.salary }}</td>
+            </tr>
+          </table>
+        </div>
 
+        <div ng-controller="FinanceCtrl" class="col-md-4">
+          <h2>Finance</h2>
+          <div class="well">
+            # Employees:  {{(employees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ GetCurrentSalaries() }}<br>
+            Avg Salary: {{ GetAverageSalary() }}
+          </div>
+          <table>
+            <tr ng-repeat="employee in employees">
+              <td>
+                <label><input type="checkbox" ng-model="employee.employed" />
+                {{ employee.title }}</label>
+              </td>
+              <td align="right">{{ employee.salary }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
   </body>
 </html>

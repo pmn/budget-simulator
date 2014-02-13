@@ -102,3 +102,40 @@ function LogisticsCtrl($scope){
         {'title': 'Driver', 'salary': 60000, 'employed':true },
         {'title': 'Driver', 'salary': 60000, 'employed':true }];
 };
+
+function FinanceCtrl($scope) {
+    $scope.GetCurrentSalaries = function() {
+        var total = 0.0;
+        $scope.employees.forEach(function(employee){
+            if (employee.employed) total += employee.salary;
+        });
+
+        return total;
+    };
+
+    $scope.GetAverageSalary = function() {
+        var total = $scope.GetCurrentSalaries();
+        var num_employees = 0.0;
+
+        $scope.employees.forEach(function(employee){
+            if (employee.employed) num_employees += 1;
+        });
+
+        return total / num_employees;
+    };
+
+    $scope.employees = [
+        {'title': 'Finance Director', 'salary': 151000, 'employed': true },
+        {'title': 'Accountant', 'salary': 102000, 'employed': false},
+        {'title': 'Secretary', 'salary': 48000, 'employed': true},
+        {'title': 'Administration Manager', 'salary': 102000, 'employed': true},
+        {'title': 'Cashier / Payroll', 'salary': 67800, 'employed': true},
+        {'title': 'Accounts Assistant', 'salary': 51000, 'employed': true},
+        {'title': 'IT Support', 'salary': 45000, 'employed': true},
+        {'title': 'Buying Assistant', 'salary': 67200, 'employed': true},
+        {'title': 'Stock Control', 'salary': 42000, 'employed': true},
+        {'title': 'Admin Assistant', 'salary': 40400, 'employed': true},
+        {'title': 'Telephone Reception', 'salary': 37800, 'employed': true},
+        {'title': 'Order Processor', 'salary': 41200, 'employed': true},
+        {'title': 'Order Processor', 'salary': 41200, 'employed': true}];
+};
