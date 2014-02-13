@@ -1,12 +1,15 @@
 function BudgetCtrl($scope){
-    $scope.accountantAdded = false;
-
     $scope.totalCuts = function() {
         return $scope.salesCuts() + $scope.logisticsCuts() + $scope.financeCuts();
     };
 
     $scope.requiredCuts = function() {
-        return 450000;
+        var acct = false;
+        $scope.financeEmployees.forEach(function(employee){
+            if (employee.title == 'Accountant' && employee.employed == true) { acct = true; }
+        });
+
+        return acct ? 552000 : 450000;
     };
 
     $scope.balance = function() {
@@ -16,7 +19,7 @@ function BudgetCtrl($scope){
     $scope.salesCuts = function() {
         var total = 0.0;
         $scope.salesEmployees.forEach(function(employee){
-            if (!employee.employed) total += employee.salary;
+            if (employee.employed == false) total += employee.salary;
         });
         return total;
     };
@@ -67,10 +70,11 @@ function BudgetCtrl($scope){
         {'title': 'West Sales Person', 'salary': 75000, 'employed': true },
         {'title': 'West Sales Person', 'salary': 75000, 'employed': true }];
 
+
     $scope.logisticsCuts = function() {
         var total = 0.0;
         $scope.logisticsEmployees.forEach(function(employee){
-            if (!employee.employed) total += employee.salary;
+            if (employee.employed == false) total += employee.salary;
         });
         return total;
     };
@@ -132,7 +136,9 @@ function BudgetCtrl($scope){
     $scope.financeCuts = function() {
         var total = 0.0;
         $scope.financeEmployees.forEach(function(employee){
-            if (!employee.employed) total += employee.salary;
+            if (employee.employed == false && employee.title != 'Accountant'){
+                total += employee.salary;
+            }
         });
         return total;
     };
@@ -159,7 +165,7 @@ function BudgetCtrl($scope){
 
     $scope.financeEmployees = [
         {'title': 'Finance Director', 'salary': 151000, 'employed': true },
-        {'title': 'Accountant', 'salary': 102000, 'employed': false},
+        {'title': 'Accountant', 'salary': 102000, 'employed': false },
         {'title': 'Secretary', 'salary': 48000, 'employed': true},
         {'title': 'Administration Manager', 'salary': 102000, 'employed': true},
         {'title': 'Cashier / Payroll', 'salary': 67800, 'employed': true},
