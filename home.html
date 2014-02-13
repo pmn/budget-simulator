@@ -39,6 +39,7 @@
             # Employees:  {{( salesEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ salesSalaries()|currency }}<br>
             Avg Salary: {{ averageSalesSalary()|currency }}<br>
+            Cut Percentage: {{ salesPercent() }}%<br>
             <label>Cut:</label>
             <ul>
               <li ng-repeat="employee in salesEmployees|filter:{'employed':false}">
@@ -63,6 +64,7 @@
             # Employees:  {{( logisticsEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ logisticsSalaries()|currency }}<br>
             Avg Salary: {{ averageLogisticsSalary()|currency }}<br>
+            Cut Percentage: {{ logisticsPercent() }} %<br>
             <label>Cut:</label>
             <ul>
               <li ng-repeat="employee in logisticsEmployees|filter:{'employed':false}">
@@ -87,6 +89,7 @@
             # Employees:  {{( financeEmployees|filter:{'employed':true}).length}} <br>
             Total Salary: {{ financeSalaries()|currency }}<br>
             Avg Salary: {{ averageFinanceSalary()|currency }}<br>
+            Cut Percentage: {{ financePercent() }} %<br>
             <label>Cut:</label>
             <ul>
               <li ng-repeat="employee in financeEmployees|filter:{'employed':false}">

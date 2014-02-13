@@ -1,6 +1,7 @@
 function BudgetCtrl($scope){
     $scope.totalCuts = function() {
-        return $scope.salesCuts() + $scope.logisticsCuts() + $scope.financeCuts();
+        var totalCuts = 0.0;
+        return totalCuts + $scope.salesCuts() + $scope.logisticsCuts() + $scope.financeCuts();
     };
 
     $scope.requiredCuts = function() {
@@ -42,6 +43,25 @@ function BudgetCtrl($scope){
         });
 
         return total / num_employees;
+    };
+
+    $scope.salesPercent = function() {
+        return Math.round(100* $scope.salesCuts() / 1936400);
+    };
+
+    $scope.logisticsPercent = function(){
+        return Math.round(100 * $scope.logisticsCuts() / 1829000);
+    };
+
+    $scope.financePercent = function() {
+        var total = 734600;
+        $scope.financeEmployees.forEach(function(employee){
+            if (employee.employed == true && employee.title == 'Accountant'){
+                total += employee.salary;
+            }
+        });
+
+        return Math.round(100 * $scope.financeCuts() / total);
     };
 
     $scope.salesEmployees = [
