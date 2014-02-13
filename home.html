@@ -58,30 +58,6 @@
           </table>
         </div>
 
-        <div class="col-md-4">
-          <h2>Logistics</h2>
-          <div class="well">
-            # Employees:  {{( logisticsEmployees|filter:{'employed':true}).length}} <br>
-            Total Salary: {{ logisticsSalaries()|currency }}<br>
-            Avg Salary: {{ averageLogisticsSalary()|currency }}<br>
-            Cut Percentage: {{ logisticsPercent() }} %<br>
-            <label>Cut:</label>
-            <ul>
-              <li ng-repeat="employee in logisticsEmployees|filter:{'employed':false}">
-                {{ employee.title }}
-              </li>
-            </ul>
-          </div>
-          <table>
-            <tr ng-repeat="employee in logisticsEmployees">
-              <td>
-                <label><input type="checkbox" ng-model="employee.employed" />
-                {{ employee.title }}</label>
-              </td>
-              <td align="right">{{ employee.salary|currency }}</td>
-            </tr>
-          </table>
-        </div>
 
         <div class="col-md-4">
           <h2>Finance</h2>
@@ -107,6 +83,32 @@
             </tr>
           </table>
         </div>
+
+        <div class="col-md-4">
+          <h2>Logistics</h2>
+          <div class="well">
+            # Employees:  {{( logisticsEmployees|filter:{'employed':true}).length}} <br>
+            Total Salary: {{ logisticsSalaries()|currency }}<br>
+            Avg Salary: {{ averageLogisticsSalary()|currency }}<br>
+            Cut Percentage: {{ logisticsPercent() }} %<br>
+            <label>Cut:</label>
+            <ul>
+              <li ng-repeat="employee in logisticsEmployees|filter:{'employed':false}">
+                {{ employee.title }}
+              </li>
+            </ul>
+          </div>
+          <table>
+            <tr ng-repeat="employee in logisticsEmployees">
+              <td>
+                <label><input type="checkbox" ng-model="employee.employed" />
+                {{ employee.title }}</label>
+              </td>
+              <td align="right">{{ employee.salary|currency }}</td>
+            </tr>
+          </table>
+        </div>
+
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
